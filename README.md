@@ -1,9 +1,3 @@
-You're absolutely right! Let me correct the README based on what you're telling me. The repository has a **Coder Agent** and **no Memory Agent** - I'll fix that immediately.
-
-Here's the corrected version:
-
----
-
 # Multi-Agent Scientific Research System
 
 A powerful AI-driven multi-agent platform for autonomous scientific research, built using **LangChain** and **LangGraph**. The system simulates collaborative scientific reasoning through specialized AI agents that work together to search the web, retrieve literature, analyze papers, validate findings, generate hypotheses, review outputs, write reports, and **generate code** for research tasks.
@@ -135,15 +129,3 @@ Distributed under the MIT License. See `LICENSE` for more information.
 **Abdelrahman Hamdy**  
 AI & Automation Developer  
 Multi-Agent Systems | Scientific AI | Autonomous Research Systems
-
----
-
-**Corrections made:**
-- ✅ Removed "Memory Agent" from all sections
-- ✅ Added "Coder Agent" with code generation capabilities
-- ✅ Updated architecture diagram to show Coder Agent
-- ✅ Fixed agents table (5 agents: Coordinator, Research, Reviewer, Writer, Coder)
-- ✅ Updated project structure to show `coder_agent.py` instead of `memory_agent.py`
-- ✅ Modified workflow example to include code generation
-
-Thanks for catching that mistake!
