@@ -1,57 +1,161 @@
 # Multi-Agent Scientific Research System
 
-An intelligent multi-agent research platform built using [LangChain](https://www.langchain.com/?utm_source=chatgpt.com) and [LangGraph](https://www.langchain.com/langgraph?utm_source=chatgpt.com) for conducting automated scientific research workflows from the web.
+A powerful AI-driven multi-agent platform for autonomous scientific research, built using [LangChain](https://www.langchain.com/?utm_source=chatgpt.com) and [LangGraph](https://www.langchain.com/langgraph?utm_source=chatgpt.com).
 
-The system can:
+The system is designed to simulate collaborative scientific reasoning using multiple specialized AI agents that work together to:
 
-* Search scientific information from the internet
-* Analyze and summarize research papers
-* Review and validate findings
-* Generate structured scientific reports
-* Coordinate multiple AI agents collaboratively
-* Store conversation and research memory
-* Produce final research-ready outputs
+* search the web,
+* retrieve scientific literature,
+* analyze research papers,
+* validate findings,
+* generate hypotheses,
+* review outputs,
+* and write structured scientific reports.
+
+Inspired by modern autonomous science systems such as [SciAgentsDiscovery](https://github.com/lamm-mit/SciAgentsDiscovery?utm_source=chatgpt.com), [Virtual Scientists (VirSci)](https://github.com/RenqiChen/Virtual-Scientists?utm_source=chatgpt.com), and [CMBAgent](https://github.com/CMBAgents/cmbagent?utm_source=chatgpt.com), this project focuses on scalable and modular scientific AI workflows. ([GitHub][1])
 
 ---
 
 # Features
 
-## Multi-Agent Architecture
+## Multi-Agent Collaboration
 
-The platform uses specialized AI agents orchestrated through LangGraph workflows.
+The system uses specialized agents coordinated through LangGraph stateful workflows.
 
-### Agents Included
+Each agent has a dedicated role:
 
-| Agent             | Responsibility                                       |
-| ----------------- | ---------------------------------------------------- |
-| Research Agent    | Searches scientific sources and collects information |
-| Reviewer Agent    | Validates accuracy and checks consistency            |
-| Writer Agent      | Generates scientific reports and summaries           |
-| Memory Agent      | Stores intermediate findings and context             |
-| Coordinator Agent | Manages workflow between agents                      |
-| Citation Agent    | Formats references and citations                     |
+* Research
+* Planning
+* Reviewing
+* Scientific reasoning
+* Writing
+* Memory management
+* Citation generation
+
+This modular architecture improves:
+
+* reasoning quality,
+* task specialization,
+* scalability,
+* reliability,
+* and scientific consistency. ([GitHub][2])
 
 ---
 
-# System Workflow
+# System Architecture
 
-```text id="cyah6v"
-User Query
-   ↓
-Coordinator Agent
-   ↓
-Research Agent → Web Search → Paper Collection
-   ↓
-Reviewer Agent → Fact Validation
-   ↓
-Memory Agent → Context Storage
-   ↓
-Writer Agent → Scientific Report Generation
-   ↓
-Citation Agent → References Formatting
-   ↓
-Final Research Output
+```text id="u7jlwm"
+                        ┌──────────────────┐
+                        │   User Query     │
+                        └────────┬─────────┘
+                                 │
+                                 ▼
+                     ┌─────────────────────┐
+                     │ Coordinator Agent   │
+                     └────────┬────────────┘
+                              │
+        ┌─────────────────────┼─────────────────────┐
+        │                     │                     │
+        ▼                     ▼                     ▼
+
+┌────────────────┐  ┌────────────────┐  ┌────────────────┐
+│ Research Agent │  │ Reviewer Agent │  │  Writer Agent  │
+└──────┬─────────┘  └──────┬─────────┘  └──────┬─────────┘
+       │                   │                   │
+       ▼                   ▼                   ▼
+
+ Web Search         Scientific Review     Final Report
+ Paper Retrieval    Fact Validation       Summarization
+ RAG Retrieval      Hallucination Check   Structured Writing
+
+                              │
+                              ▼
+                    ┌─────────────────┐
+                    │ Memory Agent    │
+                    └─────────────────┘
 ```
+
+---
+
+# Agents
+
+## Coordinator Agent
+
+The orchestrator of the entire workflow.
+
+Responsibilities:
+
+* manages agent execution,
+* routes tasks between agents,
+* tracks graph state,
+* handles iterative workflows,
+* controls execution logic.
+
+---
+
+## Research Agent
+
+Responsible for collecting scientific information.
+
+Capabilities:
+
+* web search,
+* Arxiv retrieval,
+* paper summarization,
+* RAG retrieval,
+* scientific document extraction.
+
+Supported sources:
+
+* Arxiv
+* Semantic Scholar
+* PubMed
+* Google Scholar
+* scientific websites
+
+---
+
+## Reviewer Agent
+
+Acts as the scientific critic and verifier.
+
+Responsibilities:
+
+* validates generated claims,
+* checks factual consistency,
+* detects hallucinations,
+* reviews scientific reasoning,
+* improves output quality.
+
+Inspired by critique-based scientific systems used in modern multi-agent research frameworks. ([GitHub][2])
+
+---
+
+## Writer Agent
+
+Generates:
+
+* literature reviews,
+* scientific summaries,
+* structured reports,
+* methodology explanations,
+* final research documents.
+
+The writing pipeline follows academic-style formatting and scientific reasoning workflows.
+
+---
+
+## Memory Agent
+
+Maintains:
+
+* conversation history,
+* intermediate findings,
+* retrieved documents,
+* agent context,
+* long-term workflow memory.
+
+Supports persistent contextual reasoning across multiple research iterations.
 
 ---
 
@@ -61,41 +165,59 @@ Final Research Output
 
 * LangChain
 * LangGraph
-* OpenAI / Gemini / Claude APIs
-* Retrieval-Augmented Generation (RAG)
+* OpenAI API
+* Gemini API
+* Claude API
 
 ## Backend
 
 * Python
 * FastAPI
 
-## Vector Databases
+## Retrieval & RAG
 
 * ChromaDB
 * FAISS
-* PostgreSQL + pgvector
+* PGVector
+* Embedding Models
 
-## Tools & Integrations
+## Research Tools
 
 * Tavily Search
 * Arxiv API
 * Semantic Scholar API
-* Web Scraping Tools
-* PDF Processing
-* Document Loaders
+* Web Scraping
+* PDF Parsing
+
+---
+
+# Workflow Example
+
+```text id="2rtnxp"
+User:
+"Analyze recent advancements in quantum machine learning for healthcare."
+
+Workflow:
+1. Coordinator creates execution plan
+2. Research Agent retrieves papers and web results
+3. Memory Agent stores retrieved context
+4. Reviewer Agent validates findings
+5. Writer Agent generates literature review
+6. Final scientific report is returned
+```
 
 ---
 
 # Project Structure
 
-```bash id="jag6vh"
-project/
+```bash id="uj5w7t"
+multi-agent-scientific-research-system/
 │
 ├── agents/
-│   ├── researcher.py
-│   ├── reviewer.py
-│   ├── writer.py
-│   ├── coordinator.py
+│   ├── coordinator_agent.py
+│   ├── research_agent.py
+│   ├── reviewer_agent.py
+│   ├── writer_agent.py
 │   └── memory_agent.py
 │
 ├── graph/
@@ -104,12 +226,13 @@ project/
 ├── tools/
 │   ├── web_search.py
 │   ├── arxiv_tool.py
+│   ├── rag_tool.py
 │   └── pdf_parser.py
 │
 ├── rag/
 │   ├── embeddings.py
-│   ├── vector_store.py
-│   └── retriever.py
+│   ├── retriever.py
+│   └── vector_store.py
 │
 ├── api/
 │   └── routes.py
@@ -121,110 +244,46 @@ project/
 
 ---
 
-# Example Use Cases
+# Research Capabilities
 
-* Automated literature review
-* Scientific paper summarization
-* Research trend analysis
-* Hypothesis generation
-* Technical report writing
-* Academic assistant systems
-* AI-powered knowledge discovery
+The platform supports:
 
----
+* autonomous literature review,
+* AI-assisted scientific discovery,
+* research summarization,
+* multi-agent reasoning,
+* hypothesis generation,
+* scientific critique,
+* academic writing automation.
 
-# Installation
-
-## Clone Repository
-
-```bash id="43es6h"
-git clone https://github.com/your-username/multi-agent-scientific-research-system.git
-```
-
-## Create Virtual Environment
-
-```bash id="d0e74u"
-python -m venv venv
-```
-
-## Activate Environment
-
-### Linux / Ubuntu
-
-```bash id="fp1w5m"
-source venv/bin/activate
-```
-
-### Windows
-
-```bash id="90qz7g"
-venv\Scripts\activate
-```
-
-## Install Dependencies
-
-```bash id="t6cuvq"
-pip install -r requirements.txt
-```
-
----
-
-# Run the Project
-
-```bash id="df3k3o"
-python main.py
-```
-
-or with FastAPI:
-
-```bash id="mqlt2r"
-uvicorn main:app --reload
-```
-
----
-
-# Example Query
-
-```text id="vt0qaq"
-"Analyze recent advancements in quantum machine learning for healthcare applications."
-```
+Modern research systems increasingly adopt multi-agent architectures for scientific discovery because specialized collaborative agents outperform single-agent reasoning in many complex research tasks. ([GitHub][1])
 
 ---
 
 # Future Improvements
 
-* Multi-modal research support
-* Autonomous experiment generation
-* Research paper PDF understanding
+* Multi-modal scientific reasoning
+* Autonomous experimentation
 * Knowledge graph integration
-* Voice-enabled research assistant
-* Real-time collaboration system
-* Reinforcement learning optimization
+* Research benchmarking
+* Long-term memory systems
+* Tool-using autonomous agents
+* Distributed agent execution
+* Self-improving research workflows
 
 ---
 
-# Advantages of Multi-Agent Systems
+# Inspiration & References
 
-Compared to single-agent systems:
+This project is inspired by:
 
-* Better task specialization
-* Improved reasoning quality
-* Parallel execution
-* Higher scalability
-* Easier debugging and monitoring
-* More reliable scientific outputs
+* [SciAgentsDiscovery](https://github.com/lamm-mit/SciAgentsDiscovery?utm_source=chatgpt.com)
+* [Virtual Scientists (VirSci)](https://github.com/RenqiChen/Virtual-Scientists?utm_source=chatgpt.com)
+* [CMBAgent](https://github.com/CMBAgents/cmbagent?utm_source=chatgpt.com)
+* [InternAgent](https://alpha-innovator.github.io/InternAgent-project-page/?utm_source=chatgpt.com)
+* [Research Weaver](https://phonism.github.io/research-weaver/?utm_source=chatgpt.com)
 
----
-
-# Contributing
-
-Contributions are welcome.
-
-1. Fork the repository
-2. Create a feature branch
-3. Commit changes
-4. Push to your branch
-5. Open a Pull Request
+([GitHub][1])
 
 ---
 
@@ -236,5 +295,9 @@ MIT License
 
 # Author
 
-Developed by Abdelrahman Hamdy
-AI & Automation Developer | Multi-Agent AI Systems | Scientific AI Research Systems
+Abdelrahman Hamdy
+AI & Automation Developer
+Multi-Agent Systems | Scientific AI | Autonomous Research Systems
+
+[1]: https://github.com/RenqiChen/Virtual-Scientists?utm_source=chatgpt.com "GitHub - RenqiChen/Virtual-Scientists: [ACL 2025] Multi-Agent System for Science of Science · GitHub"
+[2]: https://github.com/lamm-mit/SciAgentsDiscovery?utm_source=chatgpt.com "GitHub - lamm-mit/SciAgentsDiscovery · GitHub"
