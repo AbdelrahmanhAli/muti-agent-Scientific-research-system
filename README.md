@@ -60,7 +60,6 @@ A powerful AI-driven multi-agent platform for autonomous scientific research, bu
 
 - **AI Frameworks**: LangChain, LangGraph, OpenAI API, Gemini API, Claude API
 - **Backend**: Python, FastAPI
-- **Retrieval & RAG**: ChromaDB, FAISS, PGVector, Embedding Models
 - **Research Tools**: Tavily Search, ArXiv API, Semantic Scholar API, Web Scraping, PDF Parsing
 
 ## 📁 Project Structure
